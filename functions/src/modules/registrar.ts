@@ -13,6 +13,7 @@ export const agregarRegistro = functions.https.onRequest(async (req, res) => {
     // Push the new message into Firestore using the Firebase Admin SDK.
     const writeResult = await db.collection('registros').add({
         nombre : datos,
+        agregado : admin.firestore.FieldValue.serverTimestamp(),
     });
 
     // Send back a message that we've successfully written the message
